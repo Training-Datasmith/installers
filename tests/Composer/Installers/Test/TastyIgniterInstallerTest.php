@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\TastyIgniterInstaller;
@@ -27,67 +29,67 @@ class TastyIgniterInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $vendor, string $name, string $expectedVendor, string $expectedName): void
     {
         $this->assertEquals(
-            $this->installer->inflectPackageVars(array(
+            $this->installer->inflectPackageVars([
                 'vendor' => $vendor,
                 'name' => $name,
                 'type' => $type,
-            )),
-            array(
+            ]),
+            [
                 'vendor' => $expectedVendor,
                 'name' => $expectedName,
-                'type' => $type
-            )
+                'type' => $type,
+            ]
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
-            array(
+        return [
+            [
                 'tastyigniter-extension',
                 'acme',
                 'pages',
                 'acme',
                 'pages',
-            ),
-            array(
+            ],
+            [
                 'tastyigniter-extension',
                 'acme',
                 'ti-ext-pages',
                 'acme',
                 'pages',
-            ),
+            ],
             // tests vendor name containing a hyphen
-            array(
+            [
                 'tastyigniter-extension',
                 'foo-bar-co',
                 'blog',
                 'foobarco',
                 'blog',
-            ),
+            ],
             // tests that exactly one '-theme' is cut off
-            array(
+            [
                 'tastyigniter-theme',
                 'acme',
                 'ti-theme-theme',
                 'acme',
                 'theme',
-            ),
+            ],
             // tests that names without '-theme' suffix stay valid
-            array(
+            [
                 'tastyigniter-theme',
                 'acme',
                 'someothertheme',
                 'acme',
                 'someothertheme',
-            ),
-            array(
+            ],
+            [
                 'tastyigniter-module',
                 'tastyigniter',
                 'ti-module-system',
                 'tastyigniter',
                 'system',
-            ),
-        );
+            ],
+        ];
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
-use Composer\DependencyResolver\Pool;
 use Composer\Semver\Constraint\Constraint;
 
 class CakePHPInstaller extends BaseInstaller

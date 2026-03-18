@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Composer;
 use Composer\Installers\MatomoInstaller;
 use Composer\Package\Package;
-use Composer\Package\PackageInterface;
 
 /**
  * Class MatomoInstallerTest
@@ -33,15 +34,15 @@ class MatomoInstallerTest extends TestCase
     public function testInflectPackageVars(): void
     {
         $installer = new MatomoInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'VisitSummary'));
-        $this->assertEquals($result, array('name' => 'VisitSummary'));
+        $result = $installer->inflectPackageVars(['name' => 'VisitSummary']);
+        $this->assertEquals($result, ['name' => 'VisitSummary']);
 
         $installer = new MatomoInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'visit-summary'));
-        $this->assertEquals($result, array('name' => 'VisitSummary'));
+        $result = $installer->inflectPackageVars(['name' => 'visit-summary']);
+        $this->assertEquals($result, ['name' => 'VisitSummary']);
 
         $installer = new MatomoInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'visit_summary'));
-        $this->assertEquals($result, array('name' => 'VisitSummary'));
+        $result = $installer->inflectPackageVars(['name' => 'visit_summary']);
+        $this->assertEquals($result, ['name' => 'VisitSummary']);
     }
 }

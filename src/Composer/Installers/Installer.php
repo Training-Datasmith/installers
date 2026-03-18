@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 use Composer\Composer;
@@ -84,7 +86,7 @@ class Installer extends LibraryInstaller
         'pxcms'        => 'PxcmsInstaller',
         'phpbb'        => 'PhpBBInstaller',
         'piwik'        => 'PiwikInstaller',
-        'plentymarkets'=> 'PlentymarketsInstaller',
+        'plentymarkets' => 'PlentymarketsInstaller',
         'ppi'          => 'PPIInstaller',
         'puppet'       => 'PuppetInstaller',
         'radphp'       => 'RadPHPInstaller',
@@ -115,7 +117,7 @@ class Installer extends LibraryInstaller
         'yawik'        => 'YawikInstaller',
         'zend'         => 'ZendInstaller',
         'zikula'       => 'ZikulaInstaller',
-        'prestashop'   => 'PrestashopInstaller'
+        'prestashop'   => 'PrestashopInstaller',
     ];
 
     /**
@@ -270,7 +272,7 @@ class Installer extends LibraryInstaller
         }
 
         // Check which installers should be disabled
-        $all = [true, "all", "*"];
+        $all = [true, 'all', '*'];
         $intersect = array_intersect($all, $disable);
         if (!empty($intersect)) {
             // Disable all installers

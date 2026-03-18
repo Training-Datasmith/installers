@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
-use Composer\Composer;
 use Composer\Installers\SiteDirectInstaller;
 use Composer\Package\Package;
 
@@ -69,55 +70,55 @@ class SiteDirectInstallerTest extends TestCase
 
     public function dataProvider(): array
     {
-        return array(
-            array(
-                'data' => array(
+        return [
+            [
+                'data' => [
                     'name' => 'kernel',
                     'vendor' => 'sitedirect',
                     'type' => 'sitedirect-module',
-                ),
-                'expected' => array(
+                ],
+                'expected' => [
                     'name' => 'Kernel',
                     'vendor' => 'SiteDirect',
                     'type' => 'sitedirect-module',
-                )
-            ),
-            array(
-                'data' => array(
+                ],
+            ],
+            [
+                'data' => [
                     'name' => 'that_guy',
                     'vendor' => 'whatGuy',
                     'type' => 'sitedirect-module',
-                ),
-                'expected' => array(
+                ],
+                'expected' => [
                     'name' => 'ThatGuy',
                     'vendor' => 'whatGuy',
                     'type' => 'sitedirect-module',
-                )
-            ),
-            array(
-                'data' => array(
+                ],
+            ],
+            [
+                'data' => [
                     'name' => 'checkout',
                     'vendor' => 'someVendor',
                     'type' => 'sitedirect-plugin',
-                ),
-                'expected' => array(
+                ],
+                'expected' => [
                     'name' => 'Checkout',
                     'vendor' => 'someVendor',
                     'type' => 'sitedirect-plugin',
-                )
-            ),
-            array(
-                'data' => array(
+                ],
+            ],
+            [
+                'data' => [
                     'name' => 'checkout',
                     'vendor' => 'siteDirect',
                     'type' => 'sitedirect-plugin',
-                ),
-                'expected' => array(
+                ],
+                'expected' => [
                     'name' => 'Checkout',
                     'vendor' => 'SiteDirect',
                     'type' => 'sitedirect-plugin',
-                )
-            ),
-        );
+                ],
+            ],
+        ];
     }
 }

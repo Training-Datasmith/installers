@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\MayaInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class MayaInstallerTest extends TestCase
 {
@@ -28,36 +29,36 @@ class MayaInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $name, string $expected): void
     {
         $this->assertEquals(
-            array('name' => $expected, 'type' => $type),
-            $this->installer->inflectPackageVars(array('name' => $name, 'type' => $type))
+            ['name' => $expected, 'type' => $type],
+            $this->installer->inflectPackageVars(['name' => $name, 'type' => $type])
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
+        return [
             // Should keep module name StudlyCase
-            array(
+            [
                 'maya-module',
                 'user-profile',
-                'UserProfile'
-            ),
-            array(
+                'UserProfile',
+            ],
+            [
                 'maya-module',
                 'maya-module',
-                'Maya'
-            ),
-            array(
+                'Maya',
+            ],
+            [
                 'maya-module',
                 'blog',
-                'Blog'
-            ),
+                'Blog',
+            ],
             // tests that exactly one '-module' is cut off
-            array(
+            [
                 'maya-module',
                 'some-module-module',
                 'SomeModule',
-            ),
-        );
+            ],
+        ];
     }
 }

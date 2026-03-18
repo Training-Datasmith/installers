@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class SiteDirectInstaller extends BaseInstaller
@@ -7,7 +9,7 @@ class SiteDirectInstaller extends BaseInstaller
     /** @var array<string, string> */
     protected $locations = [
         'module' => 'modules/{$vendor}/{$name}/',
-        'plugin' => 'plugins/{$vendor}/{$name}/'
+        'plugin' => 'plugins/{$vendor}/{$name}/',
     ];
 
     /**

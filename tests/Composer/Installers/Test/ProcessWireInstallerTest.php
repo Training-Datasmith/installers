@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
+use Composer\Composer;
 use Composer\Installers\ProcessWireInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class ProcessWireInstallerTest extends TestCase
 {
@@ -22,15 +24,15 @@ class ProcessWireInstallerTest extends TestCase
     public function testInflectPackageVars(): void
     {
         $installer = new ProcessWireInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'CamelCased'));
-        $this->assertEquals($result, array('name' => 'CamelCased'));
+        $result = $installer->inflectPackageVars(['name' => 'CamelCased']);
+        $this->assertEquals($result, ['name' => 'CamelCased']);
 
         $installer = new ProcessWireInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'with-dash'));
-        $this->assertEquals($result, array('name' => 'WithDash'));
+        $result = $installer->inflectPackageVars(['name' => 'with-dash']);
+        $this->assertEquals($result, ['name' => 'WithDash']);
 
         $installer = new ProcessWireInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'with_underscore'));
-        $this->assertEquals($result, array('name' => 'WithUnderscore'));
+        $result = $installer->inflectPackageVars(['name' => 'with_underscore']);
+        $this->assertEquals($result, ['name' => 'WithUnderscore']);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class MicroweberInstaller extends BaseInstaller
@@ -11,7 +13,7 @@ class MicroweberInstaller extends BaseInstaller
         'template' => 'userfiles/templates/{$install_item_dir}/',
         'element' => 'userfiles/elements/{$install_item_dir}/',
         'vendor' => 'vendor/{$install_item_dir}/',
-        'components' => 'components/{$install_item_dir}/'
+        'components' => 'components/{$install_item_dir}/',
     ];
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\ForkCMSInstaller;
@@ -30,7 +32,7 @@ class ForkCMSInstallerTest extends TestCase
             $this->installer->inflectPackageVars([
                 'vendor' => $vendor,
                 'name' => $name,
-                'type' => $type
+                'type' => $type,
             ]),
             ['vendor' => $expectedVendor, 'name' => $expectedName, 'type' => $type]
         );

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class WHMCSInstaller extends BaseInstaller
@@ -17,6 +19,6 @@ class WHMCSInstaller extends BaseInstaller
         'social' => 'modules/social/{$vendor}_{$name}/',
         'support' => 'modules/support/{$vendor}_{$name}/',
         'templates' => 'templates/{$vendor}_{$name}/',
-        'includes' => 'includes/{$vendor}_{$name}/'
+        'includes' => 'includes/{$vendor}_{$name}/',
     ];
 }

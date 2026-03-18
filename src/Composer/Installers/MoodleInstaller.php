@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class MoodleInstaller extends BaseInstaller
@@ -68,6 +70,6 @@ class MoodleInstaller extends BaseInstaller
         'webservice'         => 'webservice/{$name}/',
         'workshopallocation' => 'mod/workshop/allocation/{$name}/',
         'workshopeval'       => 'mod/workshop/eval/{$name}/',
-        'workshopform'       => 'mod/workshop/form/{$name}/'
+        'workshopform'       => 'mod/workshop/form/{$name}/',
     ];
 }

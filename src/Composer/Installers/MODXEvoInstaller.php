@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 /**
@@ -13,6 +15,6 @@ class MODXEvoInstaller extends BaseInstaller
         'plugin'        => 'assets/plugins/{$name}/',
         'module'        => 'assets/modules/{$name}/',
         'template'      => 'assets/templates/{$name}/',
-        'lib'           => 'assets/lib/{$name}/'
+        'lib'           => 'assets/lib/{$name}/',
     ];
 }

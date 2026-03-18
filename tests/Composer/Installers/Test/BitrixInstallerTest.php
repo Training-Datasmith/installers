@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
+use Composer\Composer;
 use Composer\Installers\BitrixInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 use Composer\Package\RootPackage;
 
 /**
@@ -50,20 +52,20 @@ class BitrixInstallerTest extends TestCase
      */
     public function expectedInflectionResultsProvider(): array
     {
-        return array(
+        return [
             //check bitrix-dir is correct
-            array(
-                array('name' => 'Nyan/Cat'),
-                array('name' => 'Nyan/Cat', 'bitrix_dir' => 'bitrix')
-            ),
-            array(
-                array('name' => 'Nyan/Cat', 'bitrix_dir' => 'bitrix'),
-                array('name' => 'Nyan/Cat', 'bitrix_dir' => 'bitrix')
-            ),
-            array(
-                array('name' => 'Nyan/Cat', 'bitrix_dir' => 'local'),
-                array('name' => 'Nyan/Cat', 'bitrix_dir' => 'local')
-            ),
-        );
+            [
+                ['name' => 'Nyan/Cat'],
+                ['name' => 'Nyan/Cat', 'bitrix_dir' => 'bitrix'],
+            ],
+            [
+                ['name' => 'Nyan/Cat', 'bitrix_dir' => 'bitrix'],
+                ['name' => 'Nyan/Cat', 'bitrix_dir' => 'bitrix'],
+            ],
+            [
+                ['name' => 'Nyan/Cat', 'bitrix_dir' => 'local'],
+                ['name' => 'Nyan/Cat', 'bitrix_dir' => 'local'],
+            ],
+        ];
     }
 }

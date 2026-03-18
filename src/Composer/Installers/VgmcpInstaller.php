@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class VgmcpInstaller extends BaseInstaller
@@ -7,7 +9,7 @@ class VgmcpInstaller extends BaseInstaller
     /** @var array<string, string> */
     protected $locations = [
         'bundle' => 'src/{$vendor}/{$name}/',
-        'theme' => 'themes/{$name}/'
+        'theme' => 'themes/{$name}/',
     ];
 
     /**

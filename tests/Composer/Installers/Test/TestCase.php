@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Composer.
  *
@@ -14,17 +16,16 @@ namespace Composer\Installers\Test;
 
 use Composer\Composer;
 use Composer\Config;
+use Composer\Downloader\DownloadManager;
+use Composer\Installer\InstallationManager;
 use Composer\IO\IOInterface;
-use Composer\IO\NullIO;
-use Composer\Package\Version\VersionParser;
-use Composer\Package\Package;
 use Composer\Package\AliasPackage;
+use Composer\Package\Package;
 use Composer\Package\RootPackage;
+use Composer\Package\Version\VersionParser;
+use Composer\Repository\RepositoryManager;
 use Composer\Semver\Constraint\Constraint;
 use Composer\Util\Filesystem;
-use Composer\Installer\InstallationManager;
-use Composer\Repository\RepositoryManager;
-use Composer\Downloader\DownloadManager;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
@@ -76,7 +77,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
     protected function getComposer(): Composer
     {
-        $composer = new Composer;
+        $composer = new Composer();
         $composer->setPackage($pkg = new RootPackage('root/pkg', '1.0.0.0', '1.0.0'));
 
         $composer->setConfig(new Config(false));

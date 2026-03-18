@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class RadPHPInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
     protected $locations = [
-        'bundle' => 'src/{$name}/'
+        'bundle' => 'src/{$name}/',
     ];
 
     /**

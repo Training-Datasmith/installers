@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\VgmcpInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class VgmcpInstallerTest extends TestCase
 {
@@ -28,54 +29,54 @@ class VgmcpInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $name, string $expected): void
     {
         $this->assertEquals(
-            array('name' => $expected, 'type' => $type),
-            $this->installer->inflectPackageVars(array('name' => $name, 'type' => $type))
+            ['name' => $expected, 'type' => $type],
+            $this->installer->inflectPackageVars(['name' => $name, 'type' => $type])
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
+        return [
             // Should keep bundle name StudlyCase
-            array(
+            [
                 'vgmcp-bundle',
                 'user-profile',
-                'UserProfile'
-            ),
-            array(
+                'UserProfile',
+            ],
+            [
                 'vgmcp-bundle',
                 'vgmcp-bundle',
-                'Vgmcp'
-            ),
-            array(
+                'Vgmcp',
+            ],
+            [
                 'vgmcp-bundle',
                 'blog',
-                'Blog'
-            ),
+                'Blog',
+            ],
             // tests that exactly one '-bundle' is cut off
-            array(
+            [
                 'vgmcp-bundle',
                 'some-bundle-bundle',
                 'SomeBundle',
-            ),
+            ],
             // tests that exactly one '-theme' is cut off
-            array(
+            [
                 'vgmcp-theme',
                 'some-theme-theme',
                 'SomeTheme',
-            ),
+            ],
             // tests that names without '-theme' suffix stay valid
-            array(
+            [
                 'vgmcp-theme',
                 'someothertheme',
                 'Someothertheme',
-            ),
+            ],
             // Should keep theme name StudlyCase
-            array(
+            [
                 'vgmcp-theme',
                 'adminlte-advanced',
-                'AdminlteAdvanced'
-            ),
-        );
+                'AdminlteAdvanced',
+            ],
+        ];
     }
 }

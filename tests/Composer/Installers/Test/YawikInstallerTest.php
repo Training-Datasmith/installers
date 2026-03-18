@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Composer;
 use Composer\Installers\YawikInstaller;
 use Composer\Package\Package;
-use Composer\Package\PackageInterface;
 
 /**
  * Class YawikInstallerTest
@@ -41,16 +42,16 @@ class YawikInstallerTest extends TestCase
     public function testInflectPackageVars(string $input): void
     {
         $installer = new YawikInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => $input));
-        $this->assertEquals($result, array('name' => 'YawikCompanyRegistration'));
+        $result = $installer->inflectPackageVars(['name' => $input]);
+        $this->assertEquals($result, ['name' => 'YawikCompanyRegistration']);
     }
 
     public function packageNameProvider(): array
     {
-        return array(
-            array('yawik-company-registration'),
-            array('yawik_company_registration'),
-            array('YawikCompanyRegistration')
-        );
+        return [
+            ['yawik-company-registration'],
+            ['yawik_company_registration'],
+            ['YawikCompanyRegistration'],
+        ];
     }
 }

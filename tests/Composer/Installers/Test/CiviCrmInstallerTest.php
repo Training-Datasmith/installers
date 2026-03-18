@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\CiviCrmInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class CiviCrmInstallerTest extends TestCase
 {
@@ -28,29 +29,29 @@ class CiviCrmInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $name, string $expected): void
     {
         $this->assertEquals(
-            array('name' => $expected, 'type' => $type),
-            $this->installer->inflectPackageVars(array('name' => $name, 'type' => $type))
+            ['name' => $expected, 'type' => $type],
+            $this->installer->inflectPackageVars(['name' => $name, 'type' => $type])
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
-            array(
+        return [
+            [
                 'civicrm-ext',
                 'org.civicrm.shoreditch',
-                'org.civicrm.shoreditch'
-            ),
-            array(
+                'org.civicrm.shoreditch',
+            ],
+            [
                 'civicrm-ext',
                 'org.civicrm.flexmailer',
-                'org.civicrm.flexmailer'
-            ),
-            array(
+                'org.civicrm.flexmailer',
+            ],
+            [
                 'civicrm-ext',
                 'uk.co.vedaconsulting.mosaico',
-                'uk.co.vedaconsulting.mosaico'
-            )
-        );
+                'uk.co.vedaconsulting.mosaico',
+            ],
+        ];
     }
 }

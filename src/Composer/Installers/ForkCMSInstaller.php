@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class ForkCMSInstaller extends BaseInstaller
@@ -7,7 +9,7 @@ class ForkCMSInstaller extends BaseInstaller
     /** @var array<string, string> */
     protected $locations = [
         'module'    => 'src/Modules/{$name}/',
-        'theme'     => 'src/Themes/{$name}/'
+        'theme'     => 'src/Themes/{$name}/',
     ];
 
     /**

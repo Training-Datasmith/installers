@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class WinterInstaller extends BaseInstaller
@@ -8,7 +10,7 @@ class WinterInstaller extends BaseInstaller
     protected $locations = [
         'module'    => 'modules/{$name}/',
         'plugin'    => 'plugins/{$vendor}/{$name}/',
-        'theme'     => 'themes/{$name}/'
+        'theme'     => 'themes/{$name}/',
     ];
 
     /**
@@ -23,7 +25,7 @@ class WinterInstaller extends BaseInstaller
         if ($vars['type'] === 'winter-module') {
             return $this->inflectModuleVars($vars);
         }
-        
+
         if ($vars['type'] === 'winter-plugin') {
             return $this->inflectPluginVars($vars);
         }
@@ -34,7 +36,7 @@ class WinterInstaller extends BaseInstaller
 
         return $vars;
     }
-    
+
     /**
      * @param array<string, string> $vars
      * @return array<string, string>

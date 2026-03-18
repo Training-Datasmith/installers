@@ -1,8 +1,8 @@
 <?php
 
-namespace Composer\Installers;
+declare(strict_types=1);
 
-use Composer\DependencyResolver\Pool;
+namespace Composer\Installers;
 
 class MantisBTInstaller extends BaseInstaller
 {

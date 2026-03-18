@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
-use Composer\Composer;
 use Composer\Installers\OntoWikiInstaller;
 use Composer\Package\Package;
 
@@ -33,59 +34,59 @@ class OntoWikiInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $name, string $expected): void
     {
         $this->assertEquals(
-            $this->installer->inflectPackageVars(array('name' => $name, 'type'=>$type)),
-            array('name' => $expected, 'type'=>$type)
+            $this->installer->inflectPackageVars(['name' => $name, 'type' => $type]),
+            ['name' => $expected, 'type' => $type]
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
-            array(
+        return [
+            [
                 'ontowiki-extension',
                 'CSVImport.ontowiki',
                 'csvimport',
-            ),
-            array(
+            ],
+            [
                 'ontowiki-extension',
                 'csvimport',
                 'csvimport',
-            ),
-            array(
+            ],
+            [
                 'ontowiki-extension',
                 'some_ontowiki_extension',
                 'some_ontowiki_extension',
-            ),
-            array(
+            ],
+            [
                 'ontowiki-extension',
                 'some_ontowiki_extension.ontowiki',
                 'some_ontowiki_extension',
-            ),
-            array(
+            ],
+            [
                 'ontowiki-translation',
                 'de-translation.ontowiki',
                 'de',
-            ),
-            array(
+            ],
+            [
                 'ontowiki-translation',
                 'en-US-translation.ontowiki',
                 'en-us',
-            ),
-            array(
+            ],
+            [
                 'ontowiki-translation',
                 'en-US-translation',
                 'en-us',
-            ),
-            array(
+            ],
+            [
                 'ontowiki-theme',
                 'blue-theme.ontowiki',
                 'blue',
-            ),
-            array(
+            ],
+            [
                 'ontowiki-theme',
                 'blue-theme',
                 'blue',
-            ),
-        );
+            ],
+        ];
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Composer\Installers;
+declare(strict_types=1);
 
-use Composer\Package\PackageInterface;
+namespace Composer\Installers;
 
 class MauticInstaller extends BaseInstaller
 {

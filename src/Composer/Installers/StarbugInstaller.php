@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class StarbugInstaller extends BaseInstaller
@@ -9,6 +11,6 @@ class StarbugInstaller extends BaseInstaller
         'module' => 'modules/{$name}/',
         'theme' => 'themes/{$name}/',
         'custom-module' => 'app/modules/{$name}/',
-        'custom-theme' => 'app/themes/{$name}/'
+        'custom-theme' => 'app/themes/{$name}/',
     ];
 }

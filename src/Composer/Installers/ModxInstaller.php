@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 /**
@@ -9,6 +11,6 @@ class ModxInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
     protected $locations = [
-        'extra' => 'core/packages/{$name}/'
+        'extra' => 'core/packages/{$name}/',
     ];
 }

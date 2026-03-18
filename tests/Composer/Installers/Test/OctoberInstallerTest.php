@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\OctoberInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class OctoberInstallerTest extends TestCase
 {
@@ -28,63 +29,63 @@ class OctoberInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $vendor, string $name, string $expectedVendor, string $expectedName): void
     {
         $this->assertEquals(
-            $this->installer->inflectPackageVars(array(
+            $this->installer->inflectPackageVars([
                 'vendor' => $vendor,
                 'name' => $name,
-                'type' => $type
-            )),
-            array('vendor' => $expectedVendor, 'name' => $expectedName, 'type' => $type)
+                'type' => $type,
+            ]),
+            ['vendor' => $expectedVendor, 'name' => $expectedName, 'type' => $type]
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
-            array(
+        return [
+            [
                 'october-plugin',
                 'acme',
                 'subpagelist',
                 'acme',
                 'subpagelist',
-            ),
-            array(
+            ],
+            [
                 'october-plugin',
                 'acme',
                 'subpagelist-plugin',
                 'acme',
                 'subpagelist',
-            ),
-            array(
+            ],
+            [
                 'october-plugin',
                 'acme',
                 'semanticoctober',
                 'acme',
                 'semanticoctober',
-            ),
+            ],
             // tests vendor name containing a hyphen
-            array(
+            [
                 'october-plugin',
                 'foo-bar-co',
                 'blog',
                 'foobarco',
-                'blog'
-            ),
+                'blog',
+            ],
             // tests that exactly one '-theme' is cut off
-            array(
+            [
                 'october-theme',
                 'acme',
                 'some-theme-theme',
                 'acme',
                 'some-theme',
-            ),
+            ],
             // tests that names without '-theme' suffix stay valid
-            array(
+            [
                 'october-theme',
                 'acme',
                 'someothertheme',
                 'acme',
                 'someothertheme',
-            ),
-        );
+            ],
+        ];
     }
 }

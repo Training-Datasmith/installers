@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\WinterInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class WinterInstallerTest extends TestCase
 {
@@ -28,71 +29,71 @@ class WinterInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $vendor, string $name, string $expectedVendor, string $expectedName): void
     {
         $this->assertEquals(
-            $this->installer->inflectPackageVars(array(
+            $this->installer->inflectPackageVars([
                 'vendor' => $vendor,
                 'name' => $name,
-                'type' => $type
-            )),
-            array('vendor' => $expectedVendor, 'name' => $expectedName, 'type' => $type)
+                'type' => $type,
+            ]),
+            ['vendor' => $expectedVendor, 'name' => $expectedName, 'type' => $type]
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
-            array(
+        return [
+            [
                 'winter-plugin',
                 'acme',
                 'subpagelist',
                 'acme',
                 'subpagelist',
-            ),
-            array(
+            ],
+            [
                 'winter-plugin',
                 'acme',
                 'subpagelist-plugin',
                 'acme',
                 'subpagelist',
-            ),
-            array(
+            ],
+            [
                 'winter-plugin',
                 'acme',
                 'semanticwinter',
                 'acme',
                 'semanticwinter',
-            ),
+            ],
             // tests vendor name containing a hyphen
-            array(
+            [
                 'winter-plugin',
                 'foo-bar-co',
                 'blog',
                 'foobarco',
-                'blog'
-            ),
+                'blog',
+            ],
             // tests that exactly one '-theme' is cut off
-            array(
+            [
                 'winter-theme',
                 'acme',
                 'some-theme-theme',
                 'acme',
                 'some-theme',
-            ),
+            ],
             // tests that names without '-theme' suffix stay valid
-            array(
+            [
                 'winter-theme',
                 'acme',
                 'someothertheme',
                 'acme',
                 'someothertheme',
-            ),
+            ],
             // tests modules
-            array(
+            [
                 'winter-module',
                 'winter',
                 'wn-system-module',
                 'winter',
                 'system',
-            ),
-        );
+            ],
+        ];
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\MediaWikiInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class MediaWikiInstallerTest extends TestCase
 {
@@ -28,41 +29,41 @@ class MediaWikiInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $name, string $expected): void
     {
         $this->assertEquals(
-            $this->installer->inflectPackageVars(array('name' => $name, 'type'=>$type)),
-            array('name' => $expected, 'type'=>$type)
+            $this->installer->inflectPackageVars(['name' => $name, 'type' => $type]),
+            ['name' => $expected, 'type' => $type]
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
-            array(
+        return [
+            [
                 'mediawiki-extension',
                 'sub-page-list',
                 'SubPageList',
-            ),
-            array(
+            ],
+            [
                 'mediawiki-extension',
                 'sub-page-list-extension',
                 'SubPageList',
-            ),
-            array(
+            ],
+            [
                 'mediawiki-extension',
                 'semantic-mediawiki',
                 'SemanticMediawiki',
-            ),
+            ],
             // tests that exactly one '-skin' is cut off, and that skins do not get ucwords treatment like extensions
-            array(
+            [
                 'mediawiki-skin',
                 'some-skin-skin',
                 'some-skin',
-            ),
+            ],
             // tests that names without '-skin' suffix stay valid
-            array(
+            [
                 'mediawiki-skin',
                 'someotherskin',
                 'someotherskin',
-            ),
-        );
+            ],
+        ];
     }
 }

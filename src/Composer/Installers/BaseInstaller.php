@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
-use Composer\IO\IOInterface;
 use Composer\Composer;
+use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
 
 abstract class BaseInstaller

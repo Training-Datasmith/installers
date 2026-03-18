@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\SyDESInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class SyDESInstallerTest extends TestCase
 {
@@ -28,56 +29,56 @@ class SyDESInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $name, string $expected): void
     {
         $this->assertEquals(
-            array('name' => $expected, 'type' => $type),
-            $this->installer->inflectPackageVars(array('name' => $name, 'type' => $type))
+            ['name' => $expected, 'type' => $type],
+            $this->installer->inflectPackageVars(['name' => $name, 'type' => $type])
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
+        return [
             // modules
-            array(
+            [
                 'sydes-module',
                 'name',
-                'Name'
-            ),
-            array(
+                'Name',
+            ],
+            [
                 'sydes-module',
                 'sample-name',
-                'SampleName'
-            ),
-            array(
+                'SampleName',
+            ],
+            [
                 'sydes-module',
                 'sydes-name',
-                'Name'
-            ),
-            array(
+                'Name',
+            ],
+            [
                 'sydes-module',
                 'sample-name-module',
                 'SampleName',
-            ),
-            array(
+            ],
+            [
                 'sydes-module',
                 'sydes-sample-name-module',
-                'SampleName'
-            ),
+                'SampleName',
+            ],
             // themes
-            array(
+            [
                 'sydes-theme',
                 'some-theme-theme',
                 'some-theme',
-            ),
-            array(
+            ],
+            [
                 'sydes-theme',
                 'sydes-sometheme',
                 'sometheme',
-            ),
-            array(
+            ],
+            [
                 'sydes-theme',
                 'Sample-Name',
-                'sample-name'
-            ),
-        );
+                'sample-name',
+            ],
+        ];
     }
 }

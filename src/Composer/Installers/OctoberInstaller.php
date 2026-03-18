@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class OctoberInstaller extends BaseInstaller
@@ -8,7 +10,7 @@ class OctoberInstaller extends BaseInstaller
     protected $locations = [
         'module'    => 'modules/{$name}/',
         'plugin'    => 'plugins/{$vendor}/{$name}/',
-        'theme'     => 'themes/{$vendor}-{$name}/'
+        'theme'     => 'themes/{$vendor}-{$name}/',
     ];
 
     /**

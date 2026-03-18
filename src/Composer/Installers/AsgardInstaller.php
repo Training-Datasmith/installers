@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class AsgardInstaller extends BaseInstaller
@@ -7,7 +9,7 @@ class AsgardInstaller extends BaseInstaller
     /** @var array<string, string> */
     protected $locations = [
         'module' => 'Modules/{$name}/',
-        'theme' => 'Themes/{$name}/'
+        'theme' => 'Themes/{$name}/',
     ];
 
     /**

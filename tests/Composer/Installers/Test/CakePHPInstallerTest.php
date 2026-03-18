@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
+use Composer\Composer;
+use Composer\Config;
 use Composer\Installers\CakePHPInstaller;
-use Composer\Repository\RepositoryManager;
-use Composer\Repository\InstalledArrayRepository;
+use Composer\IO\IOInterface;
 use Composer\Package\Package;
 use Composer\Package\RootPackage;
 use Composer\Package\Version\VersionParser;
-use Composer\Composer;
-use Composer\Config;
-use Composer\IO\IOInterface;
+use Composer\Repository\InstalledArrayRepository;
+use Composer\Repository\RepositoryManager;
 use Composer\Util\HttpDownloader;
 
 class CakePHPInstallerTest extends TestCase
@@ -33,24 +35,24 @@ class CakePHPInstallerTest extends TestCase
     public function testInflectPackageVars(): void
     {
         $installer = new CakePHPInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'CamelCased'));
-        $this->assertEquals($result, array('name' => 'CamelCased'));
+        $result = $installer->inflectPackageVars(['name' => 'CamelCased']);
+        $this->assertEquals($result, ['name' => 'CamelCased']);
 
         $installer = new CakePHPInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'with-dash'));
-        $this->assertEquals($result, array('name' => 'WithDash'));
+        $result = $installer->inflectPackageVars(['name' => 'with-dash']);
+        $this->assertEquals($result, ['name' => 'WithDash']);
 
         $installer = new CakePHPInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'with_underscore'));
-        $this->assertEquals($result, array('name' => 'WithUnderscore'));
+        $result = $installer->inflectPackageVars(['name' => 'with_underscore']);
+        $this->assertEquals($result, ['name' => 'WithUnderscore']);
 
         $installer = new CakePHPInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'cake/acl'));
-        $this->assertEquals($result, array('name' => 'Cake/Acl'));
+        $result = $installer->inflectPackageVars(['name' => 'cake/acl']);
+        $this->assertEquals($result, ['name' => 'Cake/Acl']);
 
         $installer = new CakePHPInstaller($this->package, $this->composer, $this->getMockIO());
-        $result = $installer->inflectPackageVars(array('name' => 'cake/debug-kit'));
-        $this->assertEquals($result, array('name' => 'Cake/DebugKit'));
+        $result = $installer->inflectPackageVars(['name' => 'cake/debug-kit']);
+        $this->assertEquals($result, ['name' => 'Cake/DebugKit']);
     }
 
     /**

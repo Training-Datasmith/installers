@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers;
 
 class PlentymarketsInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
     protected $locations = [
-        'plugin'   => '{$name}/'
+        'plugin'   => '{$name}/',
     ];
 
     /**
@@ -14,10 +16,10 @@ class PlentymarketsInstaller extends BaseInstaller
      */
     public function inflectPackageVars(array $vars): array
     {
-        $nameBits = explode("-", $vars['name']);
+        $nameBits = explode('-', $vars['name']);
         foreach ($nameBits as $key => $name) {
             $nameBits[$key] = ucfirst($name);
-            if (strcasecmp($name, "Plugin") == 0) {
+            if (strcasecmp($name, 'Plugin') == 0) {
                 unset($nameBits[$key]);
             }
         }

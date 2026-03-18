@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Composer\Installers\Test;
 
 use Composer\Installers\DokuWikiInstaller;
 use Composer\Package\Package;
-use Composer\Composer;
 
 class DokuWikiInstallerTest extends TestCase
 {
@@ -28,64 +29,64 @@ class DokuWikiInstallerTest extends TestCase
     public function testInflectPackageVars(string $type, string $name, string $expected): void
     {
         $this->assertEquals(
-            $this->installer->inflectPackageVars(array('name' => $name, 'type'=>$type)),
-            array('name' => $expected, 'type'=>$type)
+            $this->installer->inflectPackageVars(['name' => $name, 'type' => $type]),
+            ['name' => $expected, 'type' => $type]
         );
     }
 
     public function packageNameInflectionProvider(): array
     {
-        return array(
-            array(
+        return [
+            [
                 'dokuwiki-plugin',
                 'dokuwiki-test-plugin',
                 'test',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-plugin',
                 'test-plugin',
                 'test',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-plugin',
                 'dokuwiki_test',
                 'test',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-plugin',
                 'test',
                 'test',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-plugin',
                 'test-template',
                 'test-template',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-template',
                 'dokuwiki-test-template',
                 'test',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-template',
                 'test-template',
                 'test',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-template',
                 'dokuwiki_test',
                 'test',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-template',
                 'test',
                 'test',
-            ),
-            array(
+            ],
+            [
                 'dokuwiki-template',
                 'test-plugin',
                 'test-plugin',
-            ),
-        );
+            ],
+        ];
     }
 }
