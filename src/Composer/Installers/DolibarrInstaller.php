@@ -12,7 +12,7 @@ class DolibarrInstaller extends BaseInstaller
 {
     //TODO: Add support for scripts and themes
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => 'htdocs/custom/{$name}/',
-    );
+    ];
 }

@@ -5,7 +5,7 @@ namespace Composer\Installers;
 class CiviCrmInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'ext'    => 'ext/{$name}/'
-    );
+    ];
 }

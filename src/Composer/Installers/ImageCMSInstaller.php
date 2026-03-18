@@ -5,9 +5,9 @@ namespace Composer\Installers;
 class ImageCMSInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'template'    => 'templates/{$name}/',
         'module'      => 'application/modules/{$name}/',
         'library'     => 'application/libraries/{$name}/',
-    );
+    ];
 }

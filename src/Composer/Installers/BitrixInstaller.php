@@ -26,19 +26,19 @@ use Composer\Util\Filesystem;
 class BitrixInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module'    => '{$bitrix_dir}/modules/{$name}/',    // deprecated, remove on the major release (Backward compatibility will be broken)
         'component' => '{$bitrix_dir}/components/{$name}/', // deprecated, remove on the major release (Backward compatibility will be broken)
         'theme'     => '{$bitrix_dir}/templates/{$name}/',  // deprecated, remove on the major release (Backward compatibility will be broken)
         'd7-module'    => '{$bitrix_dir}/modules/{$vendor}.{$name}/',
         'd7-component' => '{$bitrix_dir}/components/{$vendor}/{$name}/',
         'd7-template'     => '{$bitrix_dir}/templates/{$vendor}_{$name}/',
-    );
+    ];
 
     /**
      * @var string[] Storage for informations about duplicates at all the time of installation packages.
      */
-    private static $checkedDuplicates = array();
+    private static $checkedDuplicates = [];
 
     public function inflectPackageVars(array $vars): array
     {
@@ -61,7 +61,7 @@ class BitrixInstaller extends BaseInstaller
     /**
      * {@inheritdoc}
      */
-    protected function templatePath(string $path, array $vars = array()): string
+    protected function templatePath(string $path, array $vars = []): string
     {
         $templatePath = parent::templatePath($path, $vars);
         $this->checkDuplicates($templatePath, $vars);
@@ -74,7 +74,7 @@ class BitrixInstaller extends BaseInstaller
      *
      * @param array<string, string> $vars
      */
-    protected function checkDuplicates(string $path, array $vars = array()): void
+    protected function checkDuplicates(string $path, array $vars = []): void
     {
         $packageType = substr($vars['type'], strlen('bitrix') + 1);
         $localDir = explode('/', $vars['bitrix_dir']);
@@ -83,8 +83,8 @@ class BitrixInstaller extends BaseInstaller
         $localDir = implode('/', $localDir);
 
         $oldPath = str_replace(
-            array('{$bitrix_dir}', '{$name}'),
-            array($localDir, $vars['name']),
+            ['{$bitrix_dir}', '{$name}'],
+            [$localDir, $vars['name']],
             $this->locations[$packageType]
         );
 
@@ -108,10 +108,10 @@ class BitrixInstaller extends BaseInstaller
 
                     case '?':
                     default:
-                        $this->io->writeError(array(
+                        $this->io->writeError([
                             '    y - delete package ' . $oldPath . ' and to continue with the installation',
                             '    n - don\'t delete and to continue with the installation',
-                        ));
+                        ]);
                         $this->io->writeError('    ? - print help');
                         break;
                 }

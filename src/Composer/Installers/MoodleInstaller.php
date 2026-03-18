@@ -5,7 +5,7 @@ namespace Composer\Installers;
 class MoodleInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'mod'                => 'mod/{$name}/',
         'admin_report'       => 'admin/report/{$name}/',
         'atto'               => 'lib/editor/atto/plugins/{$name}/',
@@ -69,5 +69,5 @@ class MoodleInstaller extends BaseInstaller
         'workshopallocation' => 'mod/workshop/allocation/{$name}/',
         'workshopeval'       => 'mod/workshop/eval/{$name}/',
         'workshopform'       => 'mod/workshop/form/{$name}/'
-    );
+    ];
 }

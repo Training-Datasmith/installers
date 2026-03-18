@@ -9,14 +9,14 @@ namespace Composer\Installers;
 class ShopwareInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'backend-plugin'    => 'engine/Shopware/Plugins/Local/Backend/{$name}/',
         'core-plugin'       => 'engine/Shopware/Plugins/Local/Core/{$name}/',
         'frontend-plugin'   => 'engine/Shopware/Plugins/Local/Frontend/{$name}/',
         'theme'             => 'templates/{$name}/',
         'plugin'            => 'custom/plugins/{$name}/',
         'frontend-theme'    => 'themes/Frontend/{$name}/',
-    );
+    ];
 
     /**
      * Transforms the names
@@ -38,7 +38,7 @@ class ShopwareInstaller extends BaseInstaller
      */
     private function correctPluginName(array $vars): array
     {
-        $camelCasedName = preg_replace_callback('/(-[a-z])/', function ($matches) {
+        $camelCasedName = preg_replace_callback('/(-[a-z])/', function ($matches): string {
             return strtoupper($matches[0][1]);
         }, $vars['name']);
 

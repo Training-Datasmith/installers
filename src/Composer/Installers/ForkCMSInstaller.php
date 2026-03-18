@@ -37,7 +37,7 @@ class ForkCMSInstaller extends BaseInstaller
     protected function inflectModuleVars(array $vars): array
     {
         $vars['name'] = $this->pregReplace('/^fork-cms-|-module|ForkCMS|ForkCms|Forkcms|forkcms|Module$/', '', $vars['name']);
-        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']); // replace hyphens with spaces
+        $vars['name'] = str_replace(['-', '_'], ' ', $vars['name']); // replace hyphens with spaces
         $vars['name'] = str_replace(' ', '', ucwords($vars['name'])); // make module name camelcased
 
         return $vars;
@@ -50,7 +50,7 @@ class ForkCMSInstaller extends BaseInstaller
     protected function inflectThemeVars(array $vars): array
     {
         $vars['name'] = $this->pregReplace('/^fork-cms-|-theme|ForkCMS|ForkCms|Forkcms|forkcms|Theme$/', '', $vars['name']);
-        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']); // replace hyphens with spaces
+        $vars['name'] = str_replace(['-', '_'], ' ', $vars['name']); // replace hyphens with spaces
         $vars['name'] = str_replace(' ', '', ucwords($vars['name'])); // make theme name camelcased
 
         return $vars;

@@ -5,16 +5,16 @@ namespace Composer\Installers;
 class AglInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => 'More/{$name}/',
-    );
+    ];
 
     /**
      * Format package name to CamelCase
      */
     public function inflectPackageVars(array $vars): array
     {
-        $name = preg_replace_callback('/(?:^|_|-)(.?)/', function ($matches) {
+        $name = preg_replace_callback('/(?:^|_|-)(.?)/', function (array $matches) {
             return strtoupper($matches[1]);
         }, $vars['name']);
 

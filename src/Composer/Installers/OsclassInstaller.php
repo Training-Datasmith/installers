@@ -6,9 +6,9 @@ class OsclassInstaller extends BaseInstaller
 {
     
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'plugin' => 'oc-content/plugins/{$name}/',
         'theme' => 'oc-content/themes/{$name}/',
         'language' => 'oc-content/languages/{$name}/',
-    );
+    ];
 }

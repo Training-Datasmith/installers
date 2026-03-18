@@ -9,9 +9,9 @@ namespace Composer\Installers;
 class TuskInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'task'    => '.tusk/tasks/{$name}/',
         'command' => '.tusk/commands/{$name}/',
         'asset'   => 'assets/tusk/{$name}/',
-    );
+    ];
 }

@@ -8,7 +8,7 @@ namespace Composer\Installers;
 class ModxInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'extra' => 'core/packages/{$name}/'
-    );
+    ];
 }

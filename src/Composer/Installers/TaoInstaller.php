@@ -10,9 +10,9 @@ class TaoInstaller extends BaseInstaller
     const EXTRA_TAO_EXTENSION_NAME = 'tao-extension-name';
 
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'extension' => '{$name}'
-    );
+    ];
     
     public function inflectPackageVars(array $vars): array
     {

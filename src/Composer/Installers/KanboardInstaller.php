@@ -14,7 +14,7 @@ namespace Composer\Installers;
 class KanboardInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'plugin'  => 'plugins/{$name}/',
-    );
+    ];
 }

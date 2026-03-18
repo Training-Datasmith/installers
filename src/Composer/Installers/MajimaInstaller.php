@@ -9,9 +9,9 @@ namespace Composer\Installers;
 class MajimaInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'plugin' => 'plugins/{$name}/',
-    );
+    ];
 
     /**
      * Transforms the names
@@ -32,7 +32,7 @@ class MajimaInstaller extends BaseInstaller
      */
     private function correctPluginName(array $vars): array
     {
-        $camelCasedName = preg_replace_callback('/(-[a-z])/', function ($matches) {
+        $camelCasedName = preg_replace_callback('/(-[a-z])/', function ($matches): string {
             return strtoupper($matches[0][1]);
         }, $vars['name']);
 

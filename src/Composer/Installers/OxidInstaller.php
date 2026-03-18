@@ -9,11 +9,11 @@ class OxidInstaller extends BaseInstaller
     const VENDOR_PATTERN = '/^modules\/(?P<vendor>.+)\/.+/';
 
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module'    => 'modules/{$name}/',
         'theme'  => 'application/views/{$name}/',
         'out'    => 'out/{$name}/',
-    );
+    ];
 
     public function getInstallPath(PackageInterface $package, string $frameworkType = ''): string
     {

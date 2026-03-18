@@ -5,10 +5,10 @@ namespace Composer\Installers;
 class SyDESInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => 'app/modules/{$name}/',
         'theme'  => 'themes/{$name}/',
-    );
+    ];
 
     /**
      * Format module name.
@@ -35,7 +35,7 @@ class SyDESInstaller extends BaseInstaller
     public function inflectModuleVars(array $vars): array
     {
         $vars['name'] = $this->pregReplace('/(^sydes-|-module$)/i', '', $vars['name']);
-        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']);
+        $vars['name'] = str_replace(['-', '_'], ' ', $vars['name']);
         $vars['name'] = str_replace(' ', '', ucwords($vars['name']));
 
         return $vars;

@@ -6,7 +6,7 @@ class DecibelInstaller extends BaseInstaller
 {
     /** @var array */
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'app'    => 'app/{$name}/',
-    );
+    ];
 }

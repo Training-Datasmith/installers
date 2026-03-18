@@ -5,10 +5,10 @@ namespace Composer\Installers;
 class VgmcpInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'bundle' => 'src/{$vendor}/{$name}/',
         'theme' => 'themes/{$name}/'
-    );
+    ];
 
     /**
      * Format package name.
@@ -38,7 +38,7 @@ class VgmcpInstaller extends BaseInstaller
     protected function inflectPluginVars(array $vars): array
     {
         $vars['name'] = $this->pregReplace('/-bundle$/', '', $vars['name']);
-        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']);
+        $vars['name'] = str_replace(['-', '_'], ' ', $vars['name']);
         $vars['name'] = str_replace(' ', '', ucwords($vars['name']));
 
         return $vars;
@@ -51,7 +51,7 @@ class VgmcpInstaller extends BaseInstaller
     protected function inflectThemeVars(array $vars): array
     {
         $vars['name'] = $this->pregReplace('/-theme$/', '', $vars['name']);
-        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']);
+        $vars['name'] = str_replace(['-', '_'], ' ', $vars['name']);
         $vars['name'] = str_replace(' ', '', ucwords($vars['name']));
 
         return $vars;

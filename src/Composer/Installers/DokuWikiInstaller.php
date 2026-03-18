@@ -5,10 +5,10 @@ namespace Composer\Installers;
 class DokuWikiInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'plugin' => 'lib/plugins/{$name}/',
         'template' => 'lib/tpl/{$name}/',
-    );
+    ];
 
     /**
      * Format package name.

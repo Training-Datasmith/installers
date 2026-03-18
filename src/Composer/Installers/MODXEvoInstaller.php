@@ -8,11 +8,11 @@ namespace Composer\Installers;
 class MODXEvoInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'snippet'       => 'assets/snippets/{$name}/',
         'plugin'        => 'assets/plugins/{$name}/',
         'module'        => 'assets/modules/{$name}/',
         'template'      => 'assets/templates/{$name}/',
         'lib'           => 'assets/lib/{$name}/'
-    );
+    ];
 }

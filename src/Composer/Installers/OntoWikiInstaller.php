@@ -5,11 +5,11 @@ namespace Composer\Installers;
 class OntoWikiInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'extension' => 'extensions/{$name}/',
         'theme' => 'extensions/themes/{$name}/',
         'translation' => 'extensions/translations/{$name}/',
-    );
+    ];
 
     /**
      * Format package name to lower case and remove ".ontowiki" suffix

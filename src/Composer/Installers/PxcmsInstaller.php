@@ -5,10 +5,10 @@ namespace Composer\Installers;
 class PxcmsInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => 'app/Modules/{$name}/',
         'theme' => 'themes/{$name}/',
-    );
+    ];
 
     /**
      * Format package name.

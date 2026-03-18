@@ -5,7 +5,7 @@ namespace Composer\Installers;
 class WHMCSInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'addons' => 'modules/addons/{$vendor}_{$name}/',
         'fraud' => 'modules/fraud/{$vendor}_{$name}/',
         'gateways' => 'modules/gateways/{$vendor}_{$name}/',
@@ -18,5 +18,5 @@ class WHMCSInstaller extends BaseInstaller
         'support' => 'modules/support/{$vendor}_{$name}/',
         'templates' => 'templates/{$vendor}_{$name}/',
         'includes' => 'includes/{$vendor}_{$name}/'
-    );
+    ];
 }

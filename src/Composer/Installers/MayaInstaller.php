@@ -5,9 +5,9 @@ namespace Composer\Installers;
 class MayaInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => 'modules/{$name}/',
-    );
+    ];
 
     /**
      * Format package name.
@@ -30,7 +30,7 @@ class MayaInstaller extends BaseInstaller
     protected function inflectModuleVars(array $vars): array
     {
         $vars['name'] = $this->pregReplace('/-module$/', '', $vars['name']);
-        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']);
+        $vars['name'] = str_replace(['-', '_'], ' ', $vars['name']);
         $vars['name'] = str_replace(' ', '', ucwords($vars['name']));
 
         return $vars;

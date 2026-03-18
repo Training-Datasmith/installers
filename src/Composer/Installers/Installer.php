@@ -19,7 +19,7 @@ class Installer extends LibraryInstaller
      *
      * @var array<string, string>
      */
-    private $supportedTypes = array(
+    private $supportedTypes = [
         'akaunting'    => 'AkauntingInstaller',
         'asgard'       => 'AsgardInstaller',
         'attogram'     => 'AttogramInstaller',
@@ -116,7 +116,7 @@ class Installer extends LibraryInstaller
         'zend'         => 'ZendInstaller',
         'zikula'       => 'ZikulaInstaller',
         'prestashop'   => 'PrestashopInstaller'
-    );
+    ];
 
     /**
      * Disables installers specified in main composer extra installer-disable
@@ -155,7 +155,7 @@ class Installer extends LibraryInstaller
 
         $path = $installer->getInstallPath($package, $frameworkType);
         if (!$this->filesystem->isAbsolutePath($path)) {
-            $path = getcwd() . '/' . $path;
+            return getcwd() . '/' . $path;
         }
 
         return $path;
@@ -165,7 +165,7 @@ class Installer extends LibraryInstaller
     {
         $installPath = $this->getPackageBasePath($package);
         $io = $this->io;
-        $outputStatus = function () use ($io, $installPath) {
+        $outputStatus = function () use ($io, $installPath): void {
             $io->write(sprintf('Deleting %s - %s', $installPath, !file_exists($installPath) ? '<comment>deleted</comment>' : '<error>not deleted</error>'));
         };
 
@@ -266,20 +266,20 @@ class Installer extends LibraryInstaller
 
         // Ensure $disabled is an array
         if (!is_array($disable)) {
-            $disable = array($disable);
+            $disable = [$disable];
         }
 
         // Check which installers should be disabled
-        $all = array(true, "all", "*");
+        $all = [true, "all", "*"];
         $intersect = array_intersect($all, $disable);
         if (!empty($intersect)) {
             // Disable all installers
-            $this->supportedTypes = array();
+            $this->supportedTypes = [];
             return;
         }
 
         // Disable specified installers
-        foreach ($disable as $key => $installer) {
+        foreach ($disable as $installer) {
             if (is_string($installer) && key_exists($installer, $this->supportedTypes)) {
                 unset($this->supportedTypes[$installer]);
             }

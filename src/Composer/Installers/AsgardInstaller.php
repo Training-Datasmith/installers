@@ -5,10 +5,10 @@ namespace Composer\Installers;
 class AsgardInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => 'Modules/{$name}/',
         'theme' => 'Themes/{$name}/'
-    );
+    ];
 
     /**
      * Format package name.
@@ -37,7 +37,7 @@ class AsgardInstaller extends BaseInstaller
     protected function inflectPluginVars(array $vars): array
     {
         $vars['name'] = $this->pregReplace('/-module$/', '', $vars['name']);
-        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']);
+        $vars['name'] = str_replace(['-', '_'], ' ', $vars['name']);
         $vars['name'] = str_replace(' ', '', ucwords($vars['name']));
 
         return $vars;
@@ -50,7 +50,7 @@ class AsgardInstaller extends BaseInstaller
     protected function inflectThemeVars(array $vars): array
     {
         $vars['name'] = $this->pregReplace('/-theme$/', '', $vars['name']);
-        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']);
+        $vars['name'] = str_replace(['-', '_'], ' ', $vars['name']);
         $vars['name'] = str_replace(' ', '', ucwords($vars['name']));
 
         return $vars;

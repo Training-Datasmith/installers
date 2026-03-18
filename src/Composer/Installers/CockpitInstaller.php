@@ -5,9 +5,9 @@ namespace Composer\Installers;
 class CockpitInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => 'cockpit/modules/addons/{$name}/',
-    );
+    ];
 
     /**
      * Format module name.

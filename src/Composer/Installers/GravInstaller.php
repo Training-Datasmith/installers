@@ -5,10 +5,10 @@ namespace Composer\Installers;
 class GravInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'plugin' => 'user/plugins/{$name}/',
         'theme'  => 'user/themes/{$name}/',
-    );
+    ];
 
     /**
      * Format package name

@@ -5,11 +5,11 @@ namespace Composer\Installers;
 class WinterInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module'    => 'modules/{$name}/',
         'plugin'    => 'plugins/{$vendor}/{$name}/',
         'theme'     => 'themes/{$name}/'
-    );
+    ];
 
     /**
      * Format package name.

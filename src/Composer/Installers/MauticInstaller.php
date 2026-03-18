@@ -7,11 +7,11 @@ use Composer\Package\PackageInterface;
 class MauticInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'plugin'           => 'plugins/{$name}/',
         'theme'            => 'themes/{$name}/',
         'core'             => 'app/',
-    );
+    ];
 
     private function getDirectoryName(): string
     {

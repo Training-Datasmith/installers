@@ -7,10 +7,10 @@ use Composer\Package\PackageInterface;
 class SilverStripeInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => '{$name}/',
         'theme'  => 'themes/{$name}/',
-    );
+    ];
 
     /**
      * Return the install path based on package type.
@@ -25,7 +25,7 @@ class SilverStripeInstaller extends BaseInstaller
             && preg_match('/^\d+\.\d+\.\d+/', $package->getVersion())
             && version_compare($package->getVersion(), '2.999.999') < 0
         ) {
-            return $this->templatePath($this->locations['module'], array('name' => 'sapphire'));
+            return $this->templatePath($this->locations['module'], ['name' => 'sapphire']);
         }
 
         return parent::getInstallPath($package, $frameworkType);

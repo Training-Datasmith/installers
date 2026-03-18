@@ -5,9 +5,9 @@ namespace Composer\Installers;
 class PlentymarketsInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'plugin'   => '{$name}/'
-    );
+    ];
 
     /**
      * Remove hyphen, "plugin" and format to camelcase

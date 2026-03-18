@@ -5,9 +5,9 @@ namespace Composer\Installers;
 class RoundcubeInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'plugin' => 'plugins/{$name}/',
-    );
+    ];
 
     /**
      * Lowercase name and changes the name to a underscores

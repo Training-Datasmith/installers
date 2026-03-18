@@ -5,7 +5,7 @@ namespace Composer\Installers;
 class DrupalInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'core'             => 'core/',
         'module'           => 'modules/{$name}/',
         'theme'            => 'themes/{$name}/',
@@ -21,5 +21,5 @@ class DrupalInstaller extends BaseInstaller
         'console-language' => 'console/language/{$name}/',
         'config'           => 'config/sync/',
         'recipe'           => 'recipes/{$name}',
-    );
+    ];
 }

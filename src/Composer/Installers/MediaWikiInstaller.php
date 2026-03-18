@@ -5,11 +5,11 @@ namespace Composer\Installers;
 class MediaWikiInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'core' => 'core/',
         'extension' => 'extensions/{$name}/',
         'skin' => 'skins/{$name}/',
-    );
+    ];
 
     /**
      * Format package name.

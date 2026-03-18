@@ -5,14 +5,14 @@ namespace Composer\Installers;
 class MicroweberInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'module' => 'userfiles/modules/{$install_item_dir}/',
         'module-skin' => 'userfiles/modules/{$install_item_dir}/templates/',
         'template' => 'userfiles/templates/{$install_item_dir}/',
         'element' => 'userfiles/elements/{$install_item_dir}/',
         'vendor' => 'vendor/{$install_item_dir}/',
         'components' => 'components/{$install_item_dir}/'
-    );
+    ];
 
     /**
      * Format package name.

@@ -5,7 +5,7 @@ namespace Composer\Installers;
 class PortoInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array(
+    protected $locations = [
         'container' => 'app/Containers/{$name}/',
-    );
+    ];
 }

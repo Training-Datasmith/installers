@@ -9,7 +9,7 @@ use Composer\Package\PackageInterface;
 abstract class BaseInstaller
 {
     /** @var array<string, string> */
-    protected $locations = array();
+    protected $locations = [];
     /** @var Composer */
     protected $composer;
     /** @var PackageInterface */
@@ -36,7 +36,7 @@ abstract class BaseInstaller
 
         $prettyName = $this->package->getPrettyName();
         if (strpos($prettyName, '/') !== false) {
-            list($vendor, $name) = explode('/', $prettyName);
+            [$vendor, $name] = explode('/', $prettyName);
         } else {
             $vendor = '';
             $name = $prettyName;
@@ -92,15 +92,13 @@ abstract class BaseInstaller
      *
      * @param  array<string, string> $vars
      */
-    protected function templatePath(string $path, array $vars = array()): string
+    protected function templatePath(string $path, array $vars = []): string
     {
         if (strpos($path, '{') !== false) {
             extract($vars);
             preg_match_all('@\{\$([A-Za-z0-9_]*)\}@i', $path, $matches);
-            if (!empty($matches[1])) {
-                foreach ($matches[1] as $var) {
-                    $path = str_replace('{$' . $var . '}', $$var, $path);
-                }
+            foreach ($matches[1] as $var) {
+                $path = str_replace('{$' . $var . '}', ${$var}, $path);
             }
         }
 
