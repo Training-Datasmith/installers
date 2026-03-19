@@ -97,10 +97,9 @@ abstract class BaseInstaller
     protected function templatePath(string $path, array $vars = []): string
     {
         if (strpos($path, '{') !== false) {
-            extract($vars);
             preg_match_all('@\{\$([A-Za-z0-9_]*)\}@i', $path, $matches);
             foreach ($matches[1] as $var) {
-                $path = str_replace('{$' . $var . '}', ${$var}, $path);
+                $path = str_replace('{$' . $var . '}', $vars[$var] ?? '', $path);
             }
         }
 
