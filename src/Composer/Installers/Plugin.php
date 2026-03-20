@@ -1,30 +1,25 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
 use Composer\Composer;
-use Composer\IO\IOInterface;
-use Composer\Plugin\PluginInterface;
-
-class Plugin implements PluginInterface
+use Composer\IO\Io_Interface;
+use Composer\Plugin\Plugin_Interface;
+class Plugin implements Plugin_Interface
 {
     /** @var Installer */
     private $installer;
-
-    public function activate(Composer $composer, IOInterface $io): void
+    public function activate(Composer $composer, Io_Interface $io): void
     {
         $this->installer = new Installer($io, $composer);
-        $composer->getInstallationManager()->addInstaller($this->installer);
+        $composer->get_installation_manager()->add_installer($this->installer);
     }
-
-    public function deactivate(Composer $composer, IOInterface $io): void
+    public function deactivate(Composer $composer, Io_Interface $io): void
     {
-        $composer->getInstallationManager()->removeInstaller($this->installer);
+        $composer->get_installation_manager()->remove_installer($this->installer);
     }
-
-    public function uninstall(Composer $composer, IOInterface $io): void
+    public function uninstall(Composer $composer, Io_Interface $io): void
     {
     }
 }

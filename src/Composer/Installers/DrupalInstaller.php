@@ -1,27 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class DrupalInstaller extends BaseInstaller
+class Drupal_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'core'             => 'core/',
-        'module'           => 'modules/{$name}/',
-        'theme'            => 'themes/{$name}/',
-        'library'          => 'libraries/{$name}/',
-        'profile'          => 'profiles/{$name}/',
-        'database-driver'  => 'drivers/lib/Drupal/Driver/Database/{$name}/',
-        'drush'            => 'drush/{$name}/',
-        'custom-theme'     => 'themes/custom/{$name}/',
-        'custom-module'    => 'modules/custom/{$name}/',
-        'custom-profile'   => 'profiles/custom/{$name}/',
-        'drupal-multisite' => 'sites/{$name}/',
-        'console'          => 'console/{$name}/',
-        'console-language' => 'console/language/{$name}/',
-        'config'           => 'config/sync/',
-        'recipe'           => 'recipes/{$name}',
-    ];
+    protected $locations = ['core' => 'core/', 'module' => 'modules/{$name}/', 'theme' => 'themes/{$name}/', 'library' => 'libraries/{$name}/', 'profile' => 'profiles/{$name}/', 'database-driver' => 'drivers/lib/Drupal/Driver/Database/{$name}/', 'drush' => 'drush/{$name}/', 'custom-theme' => 'themes/custom/{$name}/', 'custom-module' => 'modules/custom/{$name}/', 'custom-profile' => 'profiles/custom/{$name}/', 'drupal-multisite' => 'sites/{$name}/', 'console' => 'console/{$name}/', 'console-language' => 'console/language/{$name}/', 'config' => 'config/sync/', 'recipe' => 'recipes/{$name}'];
 }

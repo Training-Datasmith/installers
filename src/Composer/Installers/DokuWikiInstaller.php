@@ -1,17 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class DokuWikiInstaller extends BaseInstaller
+class Doku_Wiki_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'plugin' => 'lib/plugins/{$name}/',
-        'template' => 'lib/tpl/{$name}/',
-    ];
-
+    protected $locations = ['plugin' => 'lib/plugins/{$name}/', 'template' => 'lib/tpl/{$name}/'];
     /**
      * Format package name.
      *
@@ -20,40 +15,34 @@ class DokuWikiInstaller extends BaseInstaller
      *
      * For package type dokuwiki-template, cut off a trailing '-template' if present.
      */
-    public function inflectPackageVars(array $vars): array
+    public function inflect_package_vars(array $vars): array
     {
         if ($vars['type'] === 'dokuwiki-plugin') {
-            return $this->inflectPluginVars($vars);
+            return $this->inflect_plugin_vars($vars);
         }
-
         if ($vars['type'] === 'dokuwiki-template') {
-            return $this->inflectTemplateVars($vars);
+            return $this->inflect_template_vars($vars);
         }
-
         return $vars;
     }
-
     /**
      * @param array<string, string> $vars
      * @return array<string, string>
      */
-    protected function inflectPluginVars(array $vars): array
+    protected function inflect_plugin_vars(array $vars): array
     {
-        $vars['name'] = $this->pregReplace('/-plugin$/', '', $vars['name']);
-        $vars['name'] = $this->pregReplace('/^dokuwiki_?-?/', '', $vars['name']);
-
+        $vars['name'] = $this->preg_replace('/-plugin$/', '', $vars['name']);
+        $vars['name'] = $this->preg_replace('/^dokuwiki_?-?/', '', $vars['name']);
         return $vars;
     }
-
     /**
      * @param array<string, string> $vars
      * @return array<string, string>
      */
-    protected function inflectTemplateVars(array $vars): array
+    protected function inflect_template_vars(array $vars): array
     {
-        $vars['name'] = $this->pregReplace('/-template$/', '', $vars['name']);
-        $vars['name'] = $this->pregReplace('/^dokuwiki_?-?/', '', $vars['name']);
-
+        $vars['name'] = $this->preg_replace('/-template$/', '', $vars['name']);
+        $vars['name'] = $this->preg_replace('/^dokuwiki_?-?/', '', $vars['name']);
         return $vars;
     }
 }

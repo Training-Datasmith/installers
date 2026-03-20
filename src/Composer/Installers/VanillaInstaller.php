@@ -1,14 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class VanillaInstaller extends BaseInstaller
+class Vanilla_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'plugin'    => 'plugins/{$name}/',
-        'theme'     => 'themes/{$name}/',
-    ];
+    protected $locations = ['plugin' => 'plugins/{$name}/', 'theme' => 'themes/{$name}/'];
 }

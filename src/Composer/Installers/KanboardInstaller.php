@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
 /**
@@ -13,10 +12,8 @@ namespace Composer\Installers;
  * Class KanboardInstaller
  * @package Composer\Installers
  */
-class KanboardInstaller extends BaseInstaller
+class Kanboard_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'plugin'  => 'plugins/{$name}/',
-    ];
+    protected $locations = ['plugin' => 'plugins/{$name}/'];
 }

@@ -1,13 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class ElggInstaller extends BaseInstaller
+class Elgg_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'plugin' => 'mod/{$name}/',
-    ];
+    protected $locations = ['plugin' => 'mod/{$name}/'];
 }

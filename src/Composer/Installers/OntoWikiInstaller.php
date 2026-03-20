@@ -1,28 +1,21 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class OntoWikiInstaller extends BaseInstaller
+class Onto_Wiki_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'extension' => 'extensions/{$name}/',
-        'theme' => 'extensions/themes/{$name}/',
-        'translation' => 'extensions/translations/{$name}/',
-    ];
-
+    protected $locations = ['extension' => 'extensions/{$name}/', 'theme' => 'extensions/themes/{$name}/', 'translation' => 'extensions/translations/{$name}/'];
     /**
      * Format package name to lower case and remove ".ontowiki" suffix
      */
-    public function inflectPackageVars(array $vars): array
+    public function inflect_package_vars(array $vars): array
     {
         $vars['name'] = strtolower($vars['name']);
-        $vars['name'] = $this->pregReplace('/.ontowiki$/', '', $vars['name']);
-        $vars['name'] = $this->pregReplace('/-theme$/', '', $vars['name']);
-        $vars['name'] = $this->pregReplace('/-translation$/', '', $vars['name']);
-
+        $vars['name'] = $this->preg_replace('/.ontowiki$/', '', $vars['name']);
+        $vars['name'] = $this->preg_replace('/-theme$/', '', $vars['name']);
+        $vars['name'] = $this->preg_replace('/-translation$/', '', $vars['name']);
         return $vars;
     }
 }

@@ -1,18 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class MediaWikiInstaller extends BaseInstaller
+class Media_Wiki_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'core' => 'core/',
-        'extension' => 'extensions/{$name}/',
-        'skin' => 'skins/{$name}/',
-    ];
-
+    protected $locations = ['core' => 'core/', 'extension' => 'extensions/{$name}/', 'skin' => 'skins/{$name}/'];
     /**
      * Format package name.
      *
@@ -21,40 +15,34 @@ class MediaWikiInstaller extends BaseInstaller
      *
      * For package type mediawiki-skin, cut off a trailing '-skin' if present.
      */
-    public function inflectPackageVars(array $vars): array
+    public function inflect_package_vars(array $vars): array
     {
         if ($vars['type'] === 'mediawiki-extension') {
-            return $this->inflectExtensionVars($vars);
+            return $this->inflect_extension_vars($vars);
         }
-
         if ($vars['type'] === 'mediawiki-skin') {
-            return $this->inflectSkinVars($vars);
+            return $this->inflect_skin_vars($vars);
         }
-
         return $vars;
     }
-
     /**
      * @param array<string, string> $vars
      * @return array<string, string>
      */
-    protected function inflectExtensionVars(array $vars): array
+    protected function inflect_extension_vars(array $vars): array
     {
-        $vars['name'] = $this->pregReplace('/-extension$/', '', $vars['name']);
+        $vars['name'] = $this->preg_replace('/-extension$/', '', $vars['name']);
         $vars['name'] = str_replace('-', ' ', $vars['name']);
         $vars['name'] = str_replace(' ', '', ucwords($vars['name']));
-
         return $vars;
     }
-
     /**
      * @param array<string, string> $vars
      * @return array<string, string>
      */
-    protected function inflectSkinVars(array $vars): array
+    protected function inflect_skin_vars(array $vars): array
     {
-        $vars['name'] = $this->pregReplace('/-skin$/', '', $vars['name']);
-
+        $vars['name'] = $this->preg_replace('/-skin$/', '', $vars['name']);
         return $vars;
     }
 }

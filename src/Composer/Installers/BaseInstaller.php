@@ -1,14 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
 use Composer\Composer;
-use Composer\IO\IOInterface;
-use Composer\Package\PackageInterface;
-
-abstract class BaseInstaller
+use Composer\IO\Io_Interface;
+use Composer\Package\Package_Interface;
+abstract class Base_Installer
 {
     /** @var array<string, string> */
     protected $locations = [];
@@ -18,83 +16,72 @@ abstract class BaseInstaller
     protected $package;
     /** @var IOInterface */
     protected $io;
-
     /**
      * Initializes base installer.
      */
-    public function __construct(PackageInterface $package, Composer $composer, IOInterface $io)
+    public function __construct(Package_Interface $package, Composer $composer, Io_Interface $io)
     {
         $this->composer = $composer;
         $this->package = $package;
         $this->io = $io;
     }
-
     /**
      * Return the install path based on package type.
      */
-    public function getInstallPath(PackageInterface $package, string $frameworkType = ''): string
+    public function get_install_path(Package_Interface $package, string $framework_type = ''): string
     {
-        $type = $this->package->getType();
-
-        $prettyName = $this->package->getPrettyName();
-        if (strpos($prettyName, '/') !== false) {
-            [$vendor, $name] = explode('/', $prettyName);
+        $type = $this->package->get_type();
+        $pretty_name = $this->package->get_pretty_name();
+        if (strpos($pretty_name, '/') !== false) {
+            [$vendor, $name] = explode('/', $pretty_name);
         } else {
             $vendor = '';
-            $name = $prettyName;
+            $name = $pretty_name;
         }
-
-        $availableVars = $this->inflectPackageVars(compact('name', 'vendor', 'type'));
-
-        $extra = $package->getExtra();
+        $available_vars = $this->inflect_package_vars(compact('name', 'vendor', 'type'));
+        $extra = $package->get_extra();
         if (!empty($extra['installer-name'])) {
-            $availableVars['name'] = $extra['installer-name'];
+            $available_vars['name'] = $extra['installer-name'];
         }
-
-        $extra = $this->composer->getPackage()->getExtra();
+        $extra = $this->composer->get_package()->get_extra();
         if (!empty($extra['installer-paths'])) {
-            $customPath = $this->mapCustomInstallPaths($extra['installer-paths'], $prettyName, $type, $vendor);
-            if ($customPath !== false) {
-                return $this->templatePath($customPath, $availableVars);
+            $custom_path = $this->map_custom_install_paths($extra['installer-paths'], $pretty_name, $type, $vendor);
+            if ($custom_path !== false) {
+                return $this->template_path($custom_path, $available_vars);
             }
         }
-
-        $packageType = substr($type, strlen($frameworkType) + 1);
-        $locations = $this->getLocations($frameworkType);
-        if (!isset($locations[$packageType])) {
+        $package_type = substr($type, strlen($framework_type) + 1);
+        $locations = $this->get_locations($framework_type);
+        if (!isset($locations[$package_type])) {
             throw new \InvalidArgumentException(sprintf('Package type "%s" is not supported', $type));
         }
-
-        return $this->templatePath($locations[$packageType], $availableVars);
+        return $this->template_path($locations[$package_type], $available_vars);
     }
-
     /**
      * For an installer to override to modify the vars per installer.
      *
      * @param  array<string, string> $vars This will normally receive array{name: string, vendor: string, type: string}
      * @return array<string, string>
      */
-    public function inflectPackageVars(array $vars): array
+    public function inflect_package_vars(array $vars): array
     {
         return $vars;
     }
-
     /**
      * Gets the installer's locations
      *
      * @return array<string, string> map of package types => install path
      */
-    public function getLocations(string $frameworkType)
+    public function get_locations(string $framework_type)
     {
         return $this->locations;
     }
-
     /**
      * Replace vars in a path
      *
      * @param  array<string, string> $vars
      */
-    protected function templatePath(string $path, array $vars = []): string
+    protected function template_path(string $path, array $vars = []): string
     {
         if (strpos($path, '{') !== false) {
             preg_match_all('@\{\$([A-Za-z0-9_]*)\}@i', $path, $matches);
@@ -102,17 +89,15 @@ abstract class BaseInstaller
                 $path = str_replace('{$' . $var . '}', $vars[$var] ?? '', $path);
             }
         }
-
         return $path;
     }
-
     /**
      * Search through a passed paths array for a custom install path.
      *
      * @param  array<string, string[]|string> $paths
      * @return string|false
      */
-    protected function mapCustomInstallPaths(array $paths, string $name, string $type, ?string $vendor = null)
+    protected function map_custom_install_paths(array $paths, string $name, string $type, ?string $vendor = null)
     {
         foreach ($paths as $path => $names) {
             $names = (array) $names;
@@ -120,17 +105,14 @@ abstract class BaseInstaller
                 return $path;
             }
         }
-
         return false;
     }
-
-    protected function pregReplace(string $pattern, string $replacement, string $subject): string
+    protected function preg_replace(string $pattern, string $replacement, string $subject): string
     {
         $result = preg_replace($pattern, $replacement, $subject);
         if (null === $result) {
-            throw new \RuntimeException('Failed to run preg_replace with '.$pattern.': '.preg_last_error());
+            throw new \RuntimeException('Failed to run preg_replace with ' . $pattern . ': ' . preg_last_error());
         }
-
         return $result;
     }
 }

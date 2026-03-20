@@ -1,14 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class DecibelInstaller extends BaseInstaller
+class Decibel_Installer extends Base_Installer
 {
     /** @var array */
     /** @var array<string, string> */
-    protected $locations = [
-        'app'    => 'app/{$name}/',
-    ];
+    protected $locations = ['app' => 'app/{$name}/'];
 }

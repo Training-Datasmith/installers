@@ -1,13 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class LaravelInstaller extends BaseInstaller
+class Laravel_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'library' => 'libraries/{$name}/',
-    ];
+    protected $locations = ['library' => 'libraries/{$name}/'];
 }

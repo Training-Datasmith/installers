@@ -1,51 +1,40 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-use Composer\Package\PackageInterface;
-
-class OxidInstaller extends BaseInstaller
+use Composer\Package\Package_Interface;
+class Oxid_Installer extends Base_Installer
 {
     public const VENDOR_PATTERN = '/^modules\/(?P<vendor>.+)\/.+/';
-
     /** @var array<string, string> */
-    protected $locations = [
-        'module'    => 'modules/{$name}/',
-        'theme'  => 'application/views/{$name}/',
-        'out'    => 'out/{$name}/',
-    ];
-
-    public function getInstallPath(PackageInterface $package, string $frameworkType = ''): string
+    protected $locations = ['module' => 'modules/{$name}/', 'theme' => 'application/views/{$name}/', 'out' => 'out/{$name}/'];
+    public function get_install_path(Package_Interface $package, string $framework_type = ''): string
     {
-        $installPath = parent::getInstallPath($package, $frameworkType);
-        $type = $this->package->getType();
+        $install_path = parent::get_install_path($package, $framework_type);
+        $type = $this->package->get_type();
         if ($type === 'oxid-module') {
-            $this->prepareVendorDirectory($installPath);
+            $this->prepare_vendor_directory($install_path);
         }
-        return $installPath;
+        return $install_path;
     }
-
     /**
      * Makes sure there is a vendormetadata.php file inside
      * the vendor folder if there is a vendor folder.
      */
-    protected function prepareVendorDirectory(string $installPath): void
+    protected function prepare_vendor_directory(string $install_path): void
     {
         $matches = '';
-        $hasVendorDirectory = preg_match(self::VENDOR_PATTERN, $installPath, $matches);
-        if (!$hasVendorDirectory) {
+        $has_vendor_directory = preg_match(self::VENDOR_PATTERN, $install_path, $matches);
+        if (!$has_vendor_directory) {
             return;
         }
-
-        $vendorDirectory = $matches['vendor'];
-        $vendorPath = getcwd() . '/modules/' . $vendorDirectory;
-        if (!file_exists($vendorPath)) {
-            mkdir($vendorPath, 0755, true);
+        $vendor_directory = $matches['vendor'];
+        $vendor_path = getcwd() . '/modules/' . $vendor_directory;
+        if (!file_exists($vendor_path)) {
+            mkdir($vendor_path, 0755, true);
         }
-
-        $vendorMetaDataPath = $vendorPath . '/vendormetadata.php';
-        touch($vendorMetaDataPath);
+        $vendor_meta_data_path = $vendor_path . '/vendormetadata.php';
+        touch($vendor_meta_data_path);
     }
 }

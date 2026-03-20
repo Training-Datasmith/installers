@@ -1,16 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class TheliaInstaller extends BaseInstaller
+class Thelia_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'module'                => 'local/modules/{$name}/',
-        'frontoffice-template'  => 'templates/frontOffice/{$name}/',
-        'backoffice-template'   => 'templates/backOffice/{$name}/',
-        'email-template'        => 'templates/email/{$name}/',
-    ];
+    protected $locations = ['module' => 'local/modules/{$name}/', 'frontoffice-template' => 'templates/frontOffice/{$name}/', 'backoffice-template' => 'templates/backOffice/{$name}/', 'email-template' => 'templates/email/{$name}/'];
 }

@@ -1,14 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class ReIndexInstaller extends BaseInstaller
+class Re_Index_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'theme'     => 'themes/{$name}/',
-        'plugin'    => 'plugins/{$name}/',
-    ];
+    protected $locations = ['theme' => 'themes/{$name}/', 'plugin' => 'plugins/{$name}/'];
 }

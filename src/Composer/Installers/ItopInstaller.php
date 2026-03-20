@@ -1,13 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class ItopInstaller extends BaseInstaller
+class Itop_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'extension'    => 'extensions/{$name}/',
-    ];
+    protected $locations = ['extension' => 'extensions/{$name}/'];
 }

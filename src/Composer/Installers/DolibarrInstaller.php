@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
 /**
@@ -10,11 +9,9 @@ namespace Composer\Installers;
  * @package Composer\Installers
  * @author  Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
  */
-class DolibarrInstaller extends BaseInstaller
+class Dolibarr_Installer extends Base_Installer
 {
     //TODO: Add support for scripts and themes
     /** @var array<string, string> */
-    protected $locations = [
-        'module' => 'htdocs/custom/{$name}/',
-    ];
+    protected $locations = ['module' => 'htdocs/custom/{$name}/'];
 }

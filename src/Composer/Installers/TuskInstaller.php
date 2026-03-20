@@ -1,19 +1,14 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
 /**
  * Composer installer for 3rd party Tusk utilities
  * @author Drew Ewing <drew@phenocode.com>
  */
-class TuskInstaller extends BaseInstaller
+class Tusk_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'task'    => '.tusk/tasks/{$name}/',
-        'command' => '.tusk/commands/{$name}/',
-        'asset'   => 'assets/tusk/{$name}/',
-    ];
+    protected $locations = ['task' => '.tusk/tasks/{$name}/', 'command' => '.tusk/commands/{$name}/', 'asset' => 'assets/tusk/{$name}/'];
 }

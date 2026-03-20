@@ -1,14 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Composer\Installers;
 
-class SMFInstaller extends BaseInstaller
+class Smf_Installer extends Base_Installer
 {
     /** @var array<string, string> */
-    protected $locations = [
-        'module' => 'Sources/{$name}/',
-        'theme' => 'Themes/{$name}/',
-    ];
+    protected $locations = ['module' => 'Sources/{$name}/', 'theme' => 'Themes/{$name}/'];
 }
