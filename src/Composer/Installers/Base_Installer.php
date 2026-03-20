@@ -70,9 +70,10 @@ abstract class Base_Installer
     /**
      * Gets the installer's locations
      *
-     * @return array<string, string> map of package types => install path
+     * @param  string $framework_type The framework type prefix (e.g. 'wordpress', 'drupal').
+     * @return array<string, string>  Map of package sub-type => install path template.
      */
-    public function get_locations(string $framework_type)
+    public function get_locations(string $framework_type): array
     {
         return $this->locations;
     }
@@ -107,6 +108,15 @@ abstract class Base_Installer
         }
         return false;
     }
+    /**
+     * Run preg_replace and throw on error instead of returning null.
+     *
+     * @param  string $pattern     PCRE pattern.
+     * @param  string $replacement Replacement string.
+     * @param  string $subject     Input string.
+     * @return string              The string after substitution.
+     * @throws \RuntimeException   If the regex fails (e.g. PREG_BACKTRACK_LIMIT_ERROR).
+     */
     protected function preg_replace(string $pattern, string $replacement, string $subject): string
     {
         $result = preg_replace($pattern, $replacement, $subject);
